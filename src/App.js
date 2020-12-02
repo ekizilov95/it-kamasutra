@@ -1,16 +1,17 @@
-import React from 'react';
-import './App.css';
-import Header from "./components/Header"
-import Menu from "./components/Navbar"
-import Content from "./components/Content"
+import React from "react";
+import "./App.css";
+import Header from "./components/Header/Header";
+import Navbar from "./components/Navbar/Navbar";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
     <div className="container">
       <div className="app-wrapper">
-        <Header/>
-        <Menu/>
-        <Content/>  
+        <Header />
+        <Navbar />
+        <Profile />
+        {/* <Dialogs /> */}
       </div>
     </div>
   );

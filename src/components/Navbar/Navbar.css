@@ -1,0 +1,19 @@
+.menu {
+  grid-area: m;
+  background-color: rgb(52, 39, 240);
+}
+.menu__item {
+  text-transform: uppercase;
+  list-style-type: none;
+}
+.menu__item:not(:last-child) {
+  margin-bottom: 20px;
+}
+.menu__item a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+.menu__item.active a {
+  color: rgb(226, 185, 21);
+}

@@ -1,10 +1,11 @@
 import React from 'react';
+import './Navbar.css';
 
-const Menu = () => {
+const Navbar = () => {
     return (
         <nav className="menu">
           <ul className="menu__list">
-            <li className="menu__item"><a href="#">Profile</a></li>
+            <li className="menu__item active"><a href="#">Profile</a></li>
             <li className="menu__item"><a href="#">Message</a></li>
             <li className="menu__item"><a href="#">News</a></li>
             <li className="menu__item"><a href="#">Music</a></li>
@@ -14,4 +15,4 @@ const Menu = () => {
     )
 }
 
-export default Menu;
+export default Navbar;
