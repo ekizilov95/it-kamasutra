@@ -1,0 +1,16 @@
+.user {
+  display: flex;
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid #000;
+}
+
+.image {
+  width: 70px;
+}
+.image img {
+  max-width: 100%;
+}
+.text {
+  margin-left: 20px;
+}

@@ -11,9 +11,10 @@
 }
 .menu__item a {
   text-decoration: none;
-  color: #fff;
+  color: rgb(19, 18, 18);
   font-weight: 600;
 }
-.menu__item.active a {
-  color: rgb(226, 185, 21);
+
+.menu__item a.active {
+  color: rgb(255, 255, 254);
 }

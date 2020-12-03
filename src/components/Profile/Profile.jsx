@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Profile.module.css';
-
+import MyPosts from './MyPosts/MyPosts';
 
 const Profile = () => {
     return (
@@ -10,7 +10,7 @@ const Profile = () => {
             </div>
             <div className={classes.user}>
                 <div className={classes.avatar}>
-                    <img className={classes.avatar__img} src="https://blog.cpanel.com/wp-content/uploads/2019/08/user-01.png" alt=""/>
+                    <img className={classes.avatar} src="https://blog.cpanel.com/wp-content/uploads/2019/08/user-01.png" alt=""/>
                 </div>
                 <div className={classes.info}>
                     <div className={classes.name}>John</div>
@@ -18,6 +18,7 @@ const Profile = () => {
                     <div className={classes.tel}>+38095326622</div>
                 </div>
             </div>
+            <MyPosts/>  
         </div>
     )
 }
