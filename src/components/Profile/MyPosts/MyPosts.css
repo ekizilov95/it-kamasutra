@@ -1,0 +1,11 @@
+.posts__form {
+  padding: 20px;
+  display: inline-flex;
+  flex-direction: column;
+}
+.posts__btn {
+  max-width: 20%;
+}
+.posts__textarea {
+  margin-bottom: 10px;
+}

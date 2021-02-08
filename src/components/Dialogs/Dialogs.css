@@ -1,0 +1,17 @@
+.dialogs {
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+  padding: 20px;
+  justify-items: center;
+  align-items: center;
+}
+.dialogs__item a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+.dialogs__item:not(:last-child) {
+  margin-bottom: 20px;
+}
+.dialogs__messages {
+}

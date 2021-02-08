@@ -1,6 +1,6 @@
 .menu {
   grid-area: m;
-  background-color: rgb(52, 39, 240);
+  background-color: #51c2d5;
 }
 .menu__item {
   text-transform: uppercase;
@@ -11,10 +11,9 @@
 }
 .menu__item a {
   text-decoration: none;
-  color: rgb(19, 18, 18);
+  color: #101111;
   font-weight: 600;
 }
-
 .menu__item a.active {
-  color: rgb(255, 255, 254);
+  color: rgb(226, 20, 20);
 }
