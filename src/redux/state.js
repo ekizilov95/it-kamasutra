@@ -1,5 +1,5 @@
-const ADD_POST = "ADD-POST",
-  UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+import profileReducer from "./profile-reducer";
+import dilogsReducer from "./dialogs-reducer";
 
 let store = {
   _state: {
@@ -31,6 +31,8 @@ let store = {
         { id: 3, name: "Denis" },
         { id: 4, name: "Sveta" },
       ],
+
+      newMessageText: "",
     },
   },
   _callSubscriber() {
@@ -44,29 +46,11 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      let newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        like: 0,
-      };
-      this._state.profilePage.postData.push(newPost);
-      this._state.profilePage.newPostText = "";
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dilogsReducer(this._state.dialogsPage, action);
 
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.newText;
-      this._callSubscriber(this._state);
-    }
+    this._callSubscriber(this._state);
   },
-};
-
-export const addPostActionCreator = () => {
-  return { type: ADD_POST };
-};
-
-export const onChangePostActionCreator = (text) => {
-  return { type: UPDATE_NEW_POST_TEXT, newText: text };
 };
 
 export default store;

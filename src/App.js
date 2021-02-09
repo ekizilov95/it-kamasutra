@@ -27,7 +27,9 @@ function App({ appState, dispatch }) {
             <Route
               exact
               path="/dialogs"
-              render={() => <Dialogs state={appState.dialogsPage} />}
+              render={() => (
+                <Dialogs state={appState.dialogsPage} dispatch={dispatch} />
+              )}
             />
           </div>
         </div>
