@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import { BrowserRouter, Route } from "react-router-dom";
 
 function App({ appState, dispatch }) {
@@ -19,7 +19,7 @@ function App({ appState, dispatch }) {
               path="/profile"
               render={() => (
                 <Profile
-                  poriflePage={appState.profilePage}
+                  poriflePage={appState.profileReducer}
                   dispatch={dispatch}
                 />
               )}
@@ -28,7 +28,10 @@ function App({ appState, dispatch }) {
               exact
               path="/dialogs"
               render={() => (
-                <Dialogs state={appState.dialogsPage} dispatch={dispatch} />
+                <DialogsContainer
+                  state={appState.dialogsReducer}
+                  dispatch={dispatch}
+                />
               )}
             />
           </div>
