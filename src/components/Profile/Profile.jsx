@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Profile.module.css";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-const Profile = ({ poriflePage, dispatch }) => {
+const Profile = () => {
   return (
     <div className={classes.profile}>
       <div className={classes.poster}>
@@ -25,7 +25,7 @@ const Profile = ({ poriflePage, dispatch }) => {
           <div className={classes.tel}>+38095326622</div>
         </div>
       </div>
-      <MyPostsContainer posts={poriflePage} dispatch={dispatch} />
+      <MyPostsContainer />
     </div>
   );
 };

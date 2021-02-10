@@ -15,7 +15,7 @@ const initialState = {
     { id: 4, name: "Sveta" },
   ],
 
-  newMessageText: "f",
+  newMessageText: "",
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -24,7 +24,7 @@ const dialogsReducer = (state = initialState, action) => {
       state.newMessageText = action.newText;
       return state;
     case ADD_MESSAGE:
-      let newMessage = { id: 4, message: state.newMessageText };
+      let newMessage = { id: 5, message: state.newMessageText };
       state.messagesData.push(newMessage);
       return state;
     default:

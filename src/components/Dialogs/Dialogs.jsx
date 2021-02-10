@@ -4,6 +4,7 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Messages/Message";
 
 const Dialogs = ({ state, updateDialogMessage, addMessage }) => {
+  debugger;
   const onMessageChange = (e) => {
     let text = e.target.value;
     updateDialogMessage(text);

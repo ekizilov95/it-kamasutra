@@ -3,10 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import store from "./redux/redux-store";
+import StoreContext from "./StoreContext";
 
 const renderEntireTree = (state) => {
   ReactDOM.render(
-    <App appState={state} dispatch={store.dispatch.bind(store)} />,
+    <StoreContext.Provider value={store}>
+      <App />
+    </StoreContext.Provider>,
     document.getElementById("root")
   );
 };
