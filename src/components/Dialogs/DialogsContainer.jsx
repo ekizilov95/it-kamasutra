@@ -7,6 +7,7 @@ import {
 import Dialogs from "./Dialogs";
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     dialogsPage: state.dialogsReducer,
   };

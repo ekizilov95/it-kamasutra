@@ -4,7 +4,6 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Messages/Message";
 
 const Dialogs = ({ dialogsPage, updateDialogMessage, addMessage }) => {
-  debugger;
   const onMessageChange = (e) => {
     let text = e.target.value;
     updateDialogMessage(text);
@@ -22,7 +21,7 @@ const Dialogs = ({ dialogsPage, updateDialogMessage, addMessage }) => {
       </div>
       <div className="dialogs__messages">
         {dialogsPage.messagesData.map((item) => (
-          <Message message={item.message} />
+          <Message message={item.message} id={item.id} />
         ))}
       </div>
       <div className="dialogs__form">

@@ -6,7 +6,7 @@ const UserPost = ({ message }) => {
     <div className={post.user}>
       <div className={post.image}>
         <img
-          src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png"
+          src="https://blog.cpanel.com/wp-content/uploads/2019/08/user-01.png"
           alt="user"
         />
       </div>

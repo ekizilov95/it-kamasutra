@@ -2,7 +2,8 @@ import React from "react";
 import classes from "./Profile.module.css";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-const Profile = () => {
+const Profile = (props) => {
+  console.log(props);
   return (
     <div className={classes.profile}>
       <div className={classes.poster}>
