@@ -37,6 +37,7 @@
   background: rgba(19, 51, 237, 0.631);
   padding: 10px 15px;
   border: 0;
+  outline: none;
   color: #fff;
   cursor: pointer;
   transition: all 0.5s;
@@ -44,4 +45,18 @@
 .users__btn_active {
   background: rgba(211, 211, 211, 0.207);
   color: black;
+}
+.users__page {
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 20px;
+  padding: 0 10px;
+}
+.users__page_current {
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.users__pagination {
+  text-align: center;
 }

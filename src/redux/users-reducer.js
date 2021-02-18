@@ -1,42 +1,35 @@
-const TOGGLE_FOLLOW = "TOGGLE-FOLLOW";
+const TOGGLE_FOLLOW = "TOGGLE-FOLLOW",
+  SET_USERS = "SET-USERS",
+  CURRENT_PAGE = "CURRENT-PAGE",
+  TOTAL_USERS_COUNT = " TOTAL-USERS-COUNT",
+  TOGGLE_IS_FETCHING = " TOGGLE-FETCHING";
 
-const initialState = {
-  users: [
-    {
-      id: 1,
-      userName: "Petr",
-      photoUrl:
-        "https://www.atlassian.com/ru/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg",
-      status: "I am the goddess of disco",
-      location: { country: "USA", city: "Chandler" },
-      followed: false,
-    },
-    {
-      id: 2,
-      userName: "Sophie",
-      photoUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Ei5MpqMeBdzn6kCVjz2xJM8VtEaVw2FOqw&usqp=CAU",
-      status: "I'm the user researcher on the Secure Communications service",
-      location: { country: "Canada", city: "Oslo" },
-      followed: true,
-    },
-    {
-      id: 3,
-      userName: "John",
-      photoUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt0OxizlNrXi-NOTAl6cIifVt5scyqwhA04Q&usqp=CAU",
-      status:
-        "I am just as obsessed with delightful UX as unshakable rapport with my team.",
-      location: { country: "Mixica", city: "Mehico" },
-      followed: false,
-    },
-  ],
-};
-
-export const followActionCreator = (userId) => ({
+export const followed = (userId) => ({
   type: TOGGLE_FOLLOW,
   userId: userId,
 });
+
+export const setUsers = (users) => ({ type: SET_USERS, users });
+
+export const selectedPage = (currentPage) => ({
+  type: CURRENT_PAGE,
+  currentPage: currentPage,
+});
+export const setTotalUsers = (totalUsersCount) => ({
+  type: TOTAL_USERS_COUNT,
+  totalUsersCount,
+});
+
+export const toggleIsFething = (isFetching) => ({
+  type: TOGGLE_IS_FETCHING,
+  isFetching,
+});
+const initialState = {
+  pageSize: 5,
+  totalCountUsers: 21,
+  currentPage: 1,
+  isFetching: false,
+};
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -50,6 +43,29 @@ const usersReducer = (state = initialState, action) => {
           return user;
         }),
       };
+    case SET_USERS:
+      return {
+        ...state,
+        users: [...action.users],
+      };
+    case CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.currentPage,
+      };
+
+    case TOTAL_USERS_COUNT:
+      return {
+        ...state,
+        totalCountUsers: action.totalUsersCount,
+      };
+
+    case TOGGLE_IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.isFetching,
+      };
+
     default:
       return state;
   }

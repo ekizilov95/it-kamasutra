@@ -1,20 +1,77 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import { followActionCreator } from "../../redux/users-reducer";
+import {
+  followed,
+  setUsers,
+  selectedPage,
+  setTotalUsers,
+  toggleIsFething,
+} from "../../redux/users-reducer";
 import Users from "./Users";
+import * as axios from "axios";
+import Preloader from "../common/preloader/Preloader";
+
+class UsersContainer extends Component {
+  componentDidMount() {
+    this.props.toggleIsFething(false);
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
+      )
+      .then((res) => {
+        setTimeout(() => {
+          this.props.toggleIsFething(true);
+        }, 200);
+        this.props.setUsers(res.data.items);
+        this.props.setTotalUsers(res.data.totalCount);
+      });
+  }
+
+  onChangePage = (p) => {
+    this.props.selectedPage(p);
+    this.props.toggleIsFething(false);
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`
+      )
+      .then((res) => {
+        setTimeout(() => {
+          this.props.toggleIsFething(true);
+        }, 200);
+        this.props.setUsers(res.data.items);
+      });
+  };
+
+  render() {
+    return this.props.isFetching ? (
+      <Users
+        usersPage={this.props.usersPage}
+        totalCountUsers={this.props.totalCountUsers}
+        pageSize={this.props.pageSize}
+        currentPage={this.props.currentPage}
+        followed={this.props.followed}
+        onChangePage={this.onChangePage}
+      />
+    ) : (
+      <Preloader />
+    );
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
     usersPage: state.usersReducer.users,
+    pageSize: state.usersReducer.pageSize,
+    totalCountUsers: state.usersReducer.totalCountUsers,
+    currentPage: state.usersReducer.currentPage,
+    isFetching: state.usersReducer.isFetching,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    followed: (userId) => dispatch(followActionCreator(userId)),
-  };
-};
-
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
-
-export default UsersContainer;
+export default connect(mapStateToProps, {
+  followed,
+  setUsers,
+  selectedPage,
+  setTotalUsers,
+  toggleIsFething,
+})(UsersContainer);
