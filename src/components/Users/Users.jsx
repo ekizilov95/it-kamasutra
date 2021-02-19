@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./users.css";
 import userPhoto from "../../assets/images/user.png";
 
@@ -52,7 +53,9 @@ export default function Users({
             <div key={user.id} className="users__item">
               <div className="users__column">
                 <div className="users__img">
-                  <img src={user.photos.small || userPhoto} alt="user" />
+                  <NavLink to={"/profile/" + user.id}>
+                    <img src={user.photos.small || userPhoto} alt="user" />
+                  </NavLink>
                 </div>
                 <button
                   onClick={() => followed(user.id)}
