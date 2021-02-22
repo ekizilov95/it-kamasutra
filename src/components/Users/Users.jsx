@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./users.css";
 import userPhoto from "../../assets/images/user.png";
+import * as axios from "axios";
 
 export default function Users({
   usersPage,
@@ -58,7 +59,38 @@ export default function Users({
                   </NavLink>
                 </div>
                 <button
-                  onClick={() => followed(user.id)}
+                  onClick={() => {
+                    if (!user.followed) {
+                      axios
+                        .post(
+                          `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
+                          {},
+                          {
+                            withCredentials: true,
+                            headers: {
+                              "API-KEY": "195da665-d12d-4f0b-adfd-cc1119b6a7f3",
+                            },
+                          }
+                        )
+                        .then((res) =>
+                          res.data.resultCode === 0 ? followed(user.id) : null
+                        );
+                    } else {
+                      axios
+                        .delete(
+                          `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
+                          {
+                            withCredentials: true,
+                            headers: {
+                              "API-KEY": "195da665-d12d-4f0b-adfd-cc1119b6a7f3",
+                            },
+                          }
+                        )
+                        .then((res) =>
+                          res.data.resultCode === 0 ? followed(user.id) : null
+                        );
+                    }
+                  }}
                   className={`users__btn ${
                     user.followed ? "" : "users__btn_active"
                   }`}
